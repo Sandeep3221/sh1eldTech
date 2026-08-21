@@ -11,8 +11,8 @@ export function ContactSection() {
       
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 sm:px-10 flex flex-col items-center">
         
-        {/* Headline - Guaranteed 2 lines on all devices */}
-        <h2 className="text-[28px] sm:text-4xl md:text-5xl lg:text-[4rem] font-heading font-extrabold text-white mb-12 sm:mb-16 text-center leading-[1.15] tracking-tight whitespace-nowrap">
+        {/* Headline - 2 lines on all devices */}
+        <h2 className="text-[26px] sm:text-4xl md:text-5xl lg:text-[4rem] font-heading font-extrabold text-white mb-12 sm:mb-16 text-center leading-[1.15] tracking-tight">
           Bring Us In Early.<br/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-[#a2ff4d]">Thank Us Later.</span>
         </h2>

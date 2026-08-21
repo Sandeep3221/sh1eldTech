@@ -21,22 +21,16 @@ const recognitions = [
 ];
 
 const LogoRow = ({ images }: { images: string[] }) => (
-  <div className="flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-between gap-8 lg:gap-0 w-full px-4">
+  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-4 w-full place-items-center">
     {images.map((src, index) => (
-      <React.Fragment key={index}>
-        <div className="w-[120px] sm:w-[140px] h-[60px] sm:h-[80px] flex items-center justify-center shrink-0 group">
-          <img 
-            src={src} 
-            alt={`Partner Logo ${index + 1}`} 
-            className="max-w-full max-h-full object-contain rounded-[12px] sm:rounded-[16px] opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-out"
-            loading="lazy"
-          />
-        </div>
-        {/* Slanted divider matching the dark theme */}
-        {index < images.length - 1 && (
-          <div className="hidden lg:block w-[1px] h-[40px] bg-white/10 rotate-[20deg] shrink-0 transition-opacity duration-500" />
-        )}
-      </React.Fragment>
+      <div key={index} className="w-[120px] sm:w-[140px] h-[60px] sm:h-[80px] flex items-center justify-center group">
+        <img 
+          src={src} 
+          alt={`Partner Logo ${index + 1}`} 
+          className="max-w-full max-h-full object-contain rounded-[12px] sm:rounded-[16px] opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-out"
+          loading="lazy"
+        />
+      </div>
     ))}
   </div>
 );
@@ -52,12 +46,8 @@ export function TestimonialsSection() {
         </h2>
 
         {/* Rows Container */}
-        <div className="w-full flex flex-col gap-12 lg:gap-16">
+        <div className="w-full flex flex-col gap-10 lg:gap-14">
           <LogoRow images={clients} />
-          
-          {/* Optional horizontal divider between rows on mobile where slant lines are hidden */}
-          <div className="block lg:hidden w-1/3 h-[1px] bg-white/5 mx-auto" />
-          
           <LogoRow images={recognitions} />
         </div>
         

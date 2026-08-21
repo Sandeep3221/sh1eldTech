@@ -47,13 +47,13 @@ export function HeroSection() {
             
             <div className="flex flex-col items-start pt-1 sm:pt-2">
               <h1 className="font-heading uppercase tracking-[-0.04em] leading-[0.92] text-white mb-5 max-w-full">
-                <span className="hero-content-ring-0 block text-5xl sm:text-6xl xl:text-[3.6rem] font-normal text-slate-200">
+                <span className="hero-content-ring-0 block text-3xl sm:text-5xl xl:text-[3.6rem] font-normal text-slate-200">
                   THE
                 </span>
-                <span className="hero-content-ring-0 block text-5xl sm:text-6xl xl:text-[3.6rem] font-normal text-slate-200">
+                <span className="hero-content-ring-0 block text-3xl sm:text-5xl xl:text-[3.6rem] font-normal text-slate-200">
                   FUTURE OF
                 </span>
-                <span className="hero-content-ring-1 block text-5xl sm:text-6xl xl:text-[3.6rem] font-semibold text-white">
+                <span className="hero-content-ring-1 block text-3xl sm:text-5xl xl:text-[3.6rem] font-semibold text-white">
                   TECHNOLOGY
                 </span>
               </h1>
