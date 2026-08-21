@@ -4,6 +4,8 @@ import { HeroSection } from '@/components/layout/HeroSection';
 import { ScrollGlobe } from '@/components/3d/ScrollGlobe';
 import { StatsSection } from '@/components/layout/StatsSection';
 import { VideoSection } from '@/components/layout/VideoSection';
+import { WhatWeDoSection } from '@/components/layout/WhatWeDoSection';
+import { TestimonialsSection } from '@/components/layout/TestimonialsSection';
 
 export default function HomePage() {
   return (
@@ -19,6 +21,12 @@ export default function HomePage() {
 
       {/* Video Section — immersive expansion when globe drops */}
       <VideoSection />
+
+      {/* What We Do Section - Masonry Grid */}
+      <WhatWeDoSection />
+
+      {/* Testimonials & Recognitions */}
+      <TestimonialsSection />
     </main>
   );
 }
