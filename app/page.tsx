@@ -6,6 +6,8 @@ import { StatsSection } from '@/components/layout/StatsSection';
 import { VideoSection } from '@/components/layout/VideoSection';
 import { WhatWeDoSection } from '@/components/layout/WhatWeDoSection';
 import { TestimonialsSection } from '@/components/layout/TestimonialsSection';
+import { ContactSection } from '@/components/layout/ContactSection';
+import { FooterSection } from '@/components/layout/FooterSection';
 
 export default function HomePage() {
   return (
@@ -27,6 +29,12 @@ export default function HomePage() {
 
       {/* Testimonials & Recognitions */}
       <TestimonialsSection />
+
+      {/* Contact Form */}
+      <ContactSection />
+
+      {/* Global Footer */}
+      <FooterSection />
     </main>
   );
 }
