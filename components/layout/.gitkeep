@@ -1,0 +1,8 @@
+
+Set-Content -Path components\ui\.gitkeep -Value 
+Set-Content -Path components\3d\.gitkeep -Value 
+Set-Content -Path public\images\.gitkeep -Value 
+Set-Content -Path public\models\.gitkeep -Value 
+Set-Content -Path lib\.gitkeep -Value 
+Set-Content -Path data\.gitkeep -Value 
+Set-Content -Path hooks\.gitkeep -Value 
