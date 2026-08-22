@@ -25,22 +25,7 @@ export interface Service {
  * site reads from here and derives its own numbering.
  */
 export const services: Service[] = [
-  {
-    slug: 'cybersecurity',
-    title: 'Cybersecurity',
-    discipline: 'Offensive & defensive',
-    summary: 'Find the hole before someone else does.',
-    description:
-      'We test systems the way an attacker would, then fix what we find. Every finding ships with a reproducible proof, an honest severity call, and the patch — not a PDF of generic warnings.',
-    capabilities: [
-      'Penetration testing',
-      'Audit & hardening',
-      'Incident response',
-      'Team training',
-    ],
-    image: null,
-    imageAlt: '',
-  },
+
   {
     slug: 'web-development',
     title: 'Web Development',

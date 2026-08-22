@@ -44,9 +44,6 @@ export default function ContactPage() {
                 data-reveal="fade"
                 className="mb-8 flex items-center gap-4 sm:mb-10 sm:gap-5"
               >
-                <span className="font-mono text-[0.6875rem] font-medium tracking-[0.18em] text-signal">
-                  04
-                </span>
                 <span className="t-meta font-mono text-fg-tertiary">
                   CONTACT
                 </span>

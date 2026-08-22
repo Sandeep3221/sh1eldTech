@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Marquee } from '@/components/ui/Marquee';
 
 const clients = [
   '/images/cli1.jpg',
@@ -20,19 +21,19 @@ const recognitions = [
   '/images/rec6.png',
 ];
 
-const LogoRow = ({ images }: { images: string[] }) => (
-  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-4 w-full place-items-center">
+const LogoRow = ({ images, reverse = false, duration = 40 }: { images: string[], reverse?: boolean, duration?: number }) => (
+  <Marquee reverse={reverse} duration={duration} className="py-2">
     {images.map((src, index) => (
-      <div key={index} className="w-[120px] sm:w-[140px] h-[60px] sm:h-[80px] flex items-center justify-center group">
+      <div key={index} className="w-[120px] sm:w-[140px] h-[60px] sm:h-[80px] mx-6 sm:mx-10 flex items-center justify-center group shrink-0">
         <img 
           src={src} 
           alt={`Partner Logo ${index + 1}`} 
-          className="max-w-full max-h-full object-contain rounded-[12px] sm:rounded-[16px] opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-out"
+          className="max-w-full max-h-full object-contain rounded-[12px] sm:rounded-[16px] opacity-85 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
           loading="lazy"
         />
       </div>
     ))}
-  </div>
+  </Marquee>
 );
 
 export function TestimonialsSection() {
@@ -46,9 +47,9 @@ export function TestimonialsSection() {
         </h2>
 
         {/* Rows Container */}
-        <div className="w-full flex flex-col gap-10 lg:gap-14">
-          <LogoRow images={clients} />
-          <LogoRow images={recognitions} />
+        <div className="w-full flex flex-col gap-6 lg:gap-8 overflow-hidden">
+          <LogoRow images={clients} duration={45} />
+          <LogoRow images={recognitions} reverse={true} duration={50} />
         </div>
         
       </div>

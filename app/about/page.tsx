@@ -21,7 +21,6 @@ export default function AboutPage() {
             <SectionHeading
               as="h1"
               scale="xl"
-              index="03"
               label="ABOUT"
               title={
                 <>
@@ -54,7 +53,7 @@ export default function AboutPage() {
                 data-reveal="up"
                 className="t-body-lg t-pretty leading-relaxed text-fg-secondary"
               >
-                From two locations in Sikkim, we cover seven disciplines end to end. No
+                From two locations in Sikkim, we cover six disciplines end to end. No
                 handoffs between agencies, no broken telephone. One team that designs,
                 engineers, secures and grows.
               </p>
@@ -99,7 +98,6 @@ export default function AboutPage() {
         <Container>
           <RevealGroup>
             <SectionHeading
-              index="03.1"
               label="DISCIPLINES"
               title="What we bring to the table."
               className="mb-12 sm:mb-16"
@@ -115,11 +113,8 @@ export default function AboutPage() {
                   style={{ ['--reveal-delay' as string]: `${i * 60}ms` }}
                   className="flex flex-col gap-4 rounded-panel border border-hairline bg-ink-700 p-6 sm:p-8"
                 >
-                  {/* Index + discipline */}
+                  {/* Discipline */}
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-[0.6875rem] font-medium tracking-[0.18em] text-signal">
-                      {padIndex(i + 1)}
-                    </span>
                     <span className="t-meta font-mono text-fg-tertiary">
                       {service.discipline}
                     </span>
@@ -162,7 +157,6 @@ export default function AboutPage() {
         <Container>
           <RevealGroup>
             <SectionHeading
-              index="03.2"
               label="LOCATIONS"
               title="Where we work."
               className="mb-12 sm:mb-16"

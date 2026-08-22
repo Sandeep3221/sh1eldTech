@@ -25,7 +25,6 @@ export default function WorkPage() {
             <SectionHeading
               as="h1"
               scale="xl"
-              index="02"
               label="SELECTED WORK"
               title={
                 <>
@@ -157,11 +156,8 @@ function FeatureProject({
         {/* Metadata */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
           <div className="flex flex-col gap-2">
-            {/* Year + Index */}
+            {/* Year */}
             <div data-reveal="fade" className="flex items-center gap-4">
-              <span className="font-mono text-[0.6875rem] font-medium tracking-[0.18em] text-signal">
-                {idx}
-              </span>
               <span className="font-mono text-xs tracking-wider text-fg-tertiary">
                 {project.year}
               </span>
@@ -239,9 +235,6 @@ function StandardProject({
       {/* Metadata */}
       <div className="flex flex-col gap-2">
         <div data-reveal="fade" className="flex items-center gap-4">
-          <span className="font-mono text-[0.6875rem] font-medium tracking-[0.18em] text-signal">
-            {idx}
-          </span>
           <span className="font-mono text-xs tracking-wider text-fg-tertiary">
             {project.year}
           </span>

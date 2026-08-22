@@ -20,11 +20,10 @@ export default function ServicesPage() {
             <SectionHeading
               as="h1"
               scale="xl"
-              index="01"
               label="SERVICES"
               title={
                 <>
-                  Seven disciplines.
+                  Six disciplines.
                   <br />
                   One team.
                 </>
@@ -40,9 +39,7 @@ export default function ServicesPage() {
         <Container>
           <div className="flex flex-col gap-0">
             {services.map((service, i) => {
-              const idx = padIndex(i + 1);
               const even = i % 2 === 0;
-              const hasCyberHero = service.image === null;
 
               return (
                 <RevealGroup key={service.slug}>
@@ -58,51 +55,18 @@ export default function ServicesPage() {
                           : 'order-1 lg:order-2'
                       }
                     >
-                      {hasCyberHero ? (
-                        /* Cybersecurity — typographic hero treatment */
-                        <div
-                          data-reveal="scale"
-                          className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-panel-lg border border-hairline bg-ink-700"
-                        >
-                          {/* Glow */}
-                          <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-signal/10 blur-[100px]" />
-                          <div className="pointer-events-none absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-mint/5 blur-[80px]" />
-
-                          {/* Large monospace backdrop */}
-                          <span
-                            aria-hidden
-                            className="absolute select-none font-mono text-[7rem] font-bold uppercase leading-none tracking-tighter text-white/[0.03] sm:text-[10rem] lg:text-[12rem]"
-                          >
-                            SH1ELD
-                          </span>
-
-                          {/* Centre badge */}
-                          <div className="relative z-10 flex flex-col items-center gap-4">
-                            <span className="flex h-16 w-16 items-center justify-center rounded-full border border-signal/40 bg-signal/10 font-mono text-xl font-bold text-signal">
-                              {idx}
-                            </span>
-                            <span className="font-heading text-xl font-semibold tracking-tight text-fg-primary sm:text-2xl">
-                              {service.title}
-                            </span>
-                            <span className="t-meta text-fg-tertiary">
-                              {service.discipline}
-                            </span>
-                          </div>
-                        </div>
-                      ) : (
-                        /* Standard image */
-                        <div
-                          data-reveal="scale"
-                          className="relative aspect-[4/3] w-full overflow-hidden rounded-panel-lg border border-hairline"
-                        >
-                          <img
-                            src={service.image!}
-                            alt={service.imageAlt}
-                            loading="lazy"
-                            className="h-full w-full object-cover transition-transform duration-700 ease-out-expo hover:scale-[1.03]"
-                          />
-                        </div>
-                      )}
+                      {/* Standard image */}
+                      <div
+                        data-reveal="scale"
+                        className="relative aspect-[4/3] w-full overflow-hidden rounded-panel-lg border border-hairline"
+                      >
+                        <img
+                          src={service.image!}
+                          alt={service.imageAlt}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-700 ease-out-expo hover:scale-[1.03]"
+                        />
+                      </div>
                     </div>
 
                     {/* ── Text content ── */}
@@ -111,11 +75,8 @@ export default function ServicesPage() {
                         even ? 'order-2 lg:order-2' : 'order-2 lg:order-1'
                       }`}
                     >
-                      {/* Index + discipline */}
+                      {/* Discipline */}
                       <div data-reveal="fade" className="flex items-center gap-4">
-                        <span className="font-mono text-[0.6875rem] font-medium tracking-[0.18em] text-signal">
-                          {idx}
-                        </span>
                         <span className="t-meta font-mono text-fg-tertiary">
                           {service.discipline}
                         </span>

@@ -83,50 +83,25 @@ export function HeroSection() {
             </div>
 
             {/* Bottom-left secondary showcase card */}
-            <div className="pause-on-hover flex w-full flex-col items-center justify-between gap-6 rounded-panel border border-white/20 bg-paper-200 p-5 text-fg-on-paper shadow-xl transition-shadow duration-300 hover:shadow-2xl sm:flex-row sm:p-6">
-              <div className="hero-content-ring-3 relative flex h-28 w-28 shrink-0 items-center justify-center sm:h-32 sm:w-32">
-                <div className="pointer-events-none absolute inset-2 rounded-full border border-dashed border-slate-300/80" />
-                <div className="pointer-events-none absolute inset-5 rounded-full border border-slate-200/60" />
-                <div className="z-10 flex h-7 w-7 items-center justify-center rounded-full bg-[#08090C] text-cyan-400 shadow-md">
-                  <span className="font-mono text-[8px] font-bold">S1</span>
-                </div>
-                <div className="absolute inset-0 animate-orbit">
-                  <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2">
-                    <div className="animate-orbit-counter flex h-9 w-9 flex-col items-center justify-center gap-0.5 rounded-full border border-[#6B1863] bg-[#4B0444] text-white shadow-lg sm:h-10 sm:w-10">
-                      <Code2 className="h-3.5 w-3.5 text-pink-200" />
-                      <span className="font-mono text-[7px] font-bold uppercase tracking-tight text-pink-100">
-                        WEB
-                      </span>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-2 left-1">
-                    <div className="animate-orbit-counter flex h-9 w-9 flex-col items-center justify-center gap-0.5 rounded-full border border-[#F38633] bg-[#E0680E] text-white shadow-lg sm:h-10 sm:w-10">
-                      <ShieldCheck className="h-3.5 w-3.5 text-amber-100" />
-                      <span className="font-mono text-[7px] font-bold uppercase tracking-tight text-white">
-                        SEC
-                      </span>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-2 right-1">
-                    <div className="animate-orbit-counter flex h-9 w-9 flex-col items-center justify-center gap-0.5 rounded-full border border-[#A7C0D0] bg-[#88A5B8] text-white shadow-lg sm:h-10 sm:w-10">
-                      <Palette className="h-3.5 w-3.5 text-slate-900" />
-                      <span className="font-mono text-[7px] font-bold uppercase tracking-tight text-slate-900">
-                        DESIGN
-                      </span>
-                    </div>
-                  </div>
-                </div>
+            <div className="hero-content-ring-3 group flex w-full flex-col justify-between overflow-hidden rounded-panel bg-paper-100 p-6 sm:p-8 shadow-xl transition-all duration-300 hover:shadow-2xl">
+              <div className="mb-8 flex flex-wrap gap-2">
+                {['Branding', 'UI/UX', 'Web', 'App', 'SEO', 'Growth'].map((tag) => (
+                  <span key={tag} className="rounded-full border border-black/10 bg-white/60 px-3 py-1.5 font-mono text-[9.5px] font-medium uppercase tracking-widest text-fg-on-paper-muted">
+                    {tag}
+                  </span>
+                ))}
               </div>
-
-              <div className="flex flex-col items-start text-left sm:items-end sm:text-right">
-                <span className="hero-content-ring-2 mb-3 max-w-[200px] font-heading text-xs font-bold uppercase leading-snug tracking-wider text-slate-900">
-                  SEVEN DISCIPLINES. ONE TEAM. NO HANDOFFS.
+              
+              <div className="flex flex-col items-start text-left">
+                <span className="mb-5 font-heading text-lg font-bold uppercase leading-tight tracking-wider text-fg-on-paper sm:text-xl">
+                  SIX DISCIPLINES.<br />ONE TEAM.<br />NO HANDOFFS.
                 </span>
                 <Link
                   href="/about"
-                  className="hero-content-ring-2 inline-flex min-h-11 items-center rounded-full border border-slate-400/50 bg-white/70 px-4 font-mono text-[11px] uppercase tracking-wider text-slate-900 shadow-sm transition-all duration-200 hover:bg-white hover:shadow"
+                  className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-5 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-white transition-all duration-300 group-hover:bg-mint group-hover:text-ink-900"
                 >
-                  DISCOVER
+                  Discover
+                  <ArrowUpRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
             </div>
