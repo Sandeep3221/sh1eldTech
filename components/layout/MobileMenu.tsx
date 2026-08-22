@@ -124,14 +124,6 @@ export function MobileMenu({ open, onClose, items, pathname, triggerRef }: Mobil
                     active ? 'text-fg-primary' : 'text-fg-secondary active:text-fg-primary',
                   )}
                 >
-                  <span
-                    className={cn(
-                      'font-mono text-[0.6875rem] tracking-[0.18em]',
-                      active ? 'text-signal' : 'text-fg-tertiary',
-                    )}
-                  >
-                    {padIndex(index + 1)}
-                  </span>
                   <span className="t-display-md font-heading font-semibold tracking-[-0.02em]">
                     {item.label}
                   </span>

@@ -83,175 +83,82 @@ export default function ContactPage() {
               {/* ── Form (3 cols) ── */}
               <div data-reveal="up" className="lg:col-span-3">
                 {submitted ? (
-                  <div className="flex min-h-[400px] flex-col items-center justify-center gap-4 rounded-panel-lg bg-paper-100 p-8 text-center">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-mint/20">
-                      <ArrowUpRight className="h-7 w-7 text-ink-900" />
+                  <div className="flex min-h-[400px] flex-col items-center justify-center gap-4 rounded-[32px] bg-white p-8 text-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#a2ff4d]/20">
+                      <ArrowUpRight className="h-7 w-7 text-[#08090C]" />
                     </div>
-                    <h3 className="font-heading text-xl font-semibold text-fg-on-paper">
-                      Message sent!
+                    <h3 className="font-heading text-xl font-bold text-black">
+                      Request Sent
                     </h3>
-                    <p className="max-w-sm text-sm text-fg-on-paper-muted">
+                    <p className="max-w-sm text-sm text-slate-500">
                       We&apos;ll get back to you within 24 hours. In the meantime,
                       feel free to explore our{' '}
-                      <a href="/work" className="underline hover:text-ink-900">
+                      <a href="/work" className="underline hover:text-[#08090C] font-semibold">
                         work
                       </a>
                       .
                     </p>
                   </div>
                 ) : (
-                  <form
-                    onSubmit={handleSubmit}
-                    className="flex flex-col gap-5 rounded-panel-lg bg-paper-100 p-6 sm:p-8 lg:p-10"
-                  >
-                    {/* Name + Email */}
-                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                      <div className="flex flex-col gap-2">
-                        <label
-                          htmlFor="name"
-                          className="t-meta ml-1 font-mono text-fg-on-paper"
-                        >
-                          Name
-                        </label>
-                        <input
-                          id="name"
-                          name="name"
-                          type="text"
-                          required
-                          placeholder="Your name"
-                          value={formState.name}
-                          onChange={handleChange}
-                          className={inputBase}
-                        />
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        <label
-                          htmlFor="email"
-                          className="t-meta ml-1 font-mono text-fg-on-paper"
-                        >
-                          Email
-                        </label>
-                        <input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          placeholder="hello@example.com"
-                          value={formState.email}
-                          onChange={handleChange}
-                          className={inputBase}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Phone + Service */}
-                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                      <div className="flex flex-col gap-2">
-                        <label
-                          htmlFor="phone"
-                          className="t-meta ml-1 font-mono text-fg-on-paper"
-                        >
-                          Phone
-                        </label>
-                        <input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          placeholder="+91 98765 43210"
-                          value={formState.phone}
-                          onChange={handleChange}
-                          className={inputBase}
-                        />
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        <label
-                          htmlFor="service"
-                          className="t-meta ml-1 font-mono text-fg-on-paper"
-                        >
-                          Service
-                        </label>
-                        <div className="relative">
-                          <select
-                            id="service"
-                            name="service"
-                            value={formState.service}
+                  <div className="w-full bg-white rounded-[32px] p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden">
+                    <form
+                      onSubmit={handleSubmit}
+                      className="relative z-10 flex flex-col gap-5 sm:gap-6"
+                    >
+                      {/* Top Row: Name & Email */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                        <div className="flex flex-col gap-2">
+                          <label htmlFor="name" className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-black font-bold ml-2">Name</label>
+                          <input
+                            id="name"
+                            name="name"
+                            type="text"
+                            required
+                            placeholder="John Doe"
+                            value={formState.name}
                             onChange={handleChange}
-                            className={`${inputBase} appearance-none pr-10`}
-                          >
-                            <option value="">Select a service</option>
-                            {services.map((s) => (
-                              <option key={s.slug} value={s.slug}>
-                                {s.title}
-                              </option>
-                            ))}
-                          </select>
-                          <ChevronDown
-                            aria-hidden
-                            className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-fg-on-paper-muted"
+                            className="w-full bg-slate-50 border border-slate-200 rounded-[20px] px-6 py-4 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#08090C] focus:ring-1 focus:ring-[#08090C] focus:bg-white transition-all duration-300"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                          <label htmlFor="email" className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-black font-bold ml-2">Email</label>
+                          <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            required
+                            placeholder="hello@example.com"
+                            value={formState.email}
+                            onChange={handleChange}
+                            className="w-full bg-slate-50 border border-slate-200 rounded-[20px] px-6 py-4 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#08090C] focus:ring-1 focus:ring-[#08090C] focus:bg-white transition-all duration-300"
                           />
                         </div>
                       </div>
-                    </div>
 
-                    {/* Budget */}
-                    <div className="flex flex-col gap-2">
-                      <label
-                        htmlFor="budget"
-                        className="t-meta ml-1 font-mono text-fg-on-paper"
-                      >
-                        Budget range
-                      </label>
-                      <div className="relative">
-                        <select
-                          id="budget"
-                          name="budget"
-                          value={formState.budget}
+                      {/* Bottom Row: Description */}
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="message" className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-black font-bold ml-2">Description</label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          rows={4}
+                          required
+                          placeholder="Tell us about your project or idea..."
+                          value={formState.message}
                           onChange={handleChange}
-                          className={`${inputBase} appearance-none pr-10`}
-                        >
-                          <option value="">Select a range</option>
-                          <option value="under-50k">Under ₹50K</option>
-                          <option value="50k-2l">₹50K – ₹2L</option>
-                          <option value="2l-5l">₹2L – ₹5L</option>
-                          <option value="5l-plus">₹5L+</option>
-                          <option value="not-sure">Not sure yet</option>
-                        </select>
-                        <ChevronDown
-                          aria-hidden
-                          className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-fg-on-paper-muted"
+                          className="w-full bg-slate-50 border border-slate-200 rounded-[20px] px-6 py-4 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#08090C] focus:ring-1 focus:ring-[#08090C] focus:bg-white transition-all duration-300 resize-none"
                         />
                       </div>
-                    </div>
 
-                    {/* Message */}
-                    <div className="flex flex-col gap-2">
-                      <label
-                        htmlFor="message"
-                        className="t-meta ml-1 font-mono text-fg-on-paper"
-                      >
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={5}
-                        required
-                        placeholder="Tell us about your project or idea..."
-                        value={formState.message}
-                        onChange={handleChange}
-                        className={`${inputBase} resize-none`}
-                      />
-                    </div>
-
-                    {/* Submit */}
-                    <button
-                      type="submit"
-                      className="group mt-2 flex w-full items-center justify-center gap-3 rounded-[16px] bg-ink-900 px-8 py-4 font-heading text-sm font-semibold uppercase tracking-wider text-white shadow-xl transition-all duration-200 hover:bg-ink-800 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-mint sm:min-h-[52px]"
-                    >
-                      <span>Send message</span>
-                      <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                    </button>
-                  </form>
+                      {/* Submit Button */}
+                      <div className="mt-4 w-full">
+                        <button type="submit" className="group w-full flex items-center justify-center gap-3 bg-[#08090C] hover:bg-slate-800 text-white font-heading font-bold text-sm sm:text-base tracking-widest uppercase py-4 sm:py-5 rounded-[20px] transition-all duration-300 shadow-xl hover:shadow-2xl">
+                          <span>Submit Request</span>
+                          <ArrowUpRight className="w-5 h-5 text-[#a2ff4d] group-hover:scale-110 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                        </button>
+                      </div>
+                    </form>
+                  </div>
                 )}
               </div>
 
