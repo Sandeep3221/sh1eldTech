@@ -36,7 +36,7 @@ export function WhatWeDoSection() {
 
   return (
     <section ref={sectionRef} className="relative w-full bg-[#08090C] py-24 md:py-32 overflow-hidden">
-      <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12">
+      <div className="w-full max-w-[1400px] mx-auto px-5 sm:px-10 lg:px-12">
         
         {/* Centered, Shortened Text Content */}
         <div className="mb-16 md:mb-20 flex flex-col items-center text-center max-w-2xl mx-auto">

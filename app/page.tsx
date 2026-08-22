@@ -11,7 +11,7 @@ import { FooterSection } from '@/components/layout/FooterSection';
 
 export default function HomePage() {
   return (
-    <main className="w-full bg-[#08090C] text-white relative overflow-x-hidden">
+    <main id="main" className="relative w-full bg-ink-900 text-white">
       {/* Fixed globe that travels from hero box to next section on scroll */}
       <ScrollGlobe />
 

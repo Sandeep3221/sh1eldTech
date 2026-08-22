@@ -10,7 +10,7 @@ export function FooterSection() {
       // Explicitly forcing system fonts to ensure it doesn't use the custom fonts from the sections above
       style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}
     >
-      <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12">
+      <div className="w-full max-w-[1400px] mx-auto px-5 sm:px-10 lg:px-12">
         
         {/* Main Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 lg:gap-16 mb-14 sm:mb-20">

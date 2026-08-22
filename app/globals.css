@@ -2,26 +2,119 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   SH1ELD TECH — DESIGN TOKENS
+   ------------------------------------------------------------
+   Accent discipline (deliberate, only two chromatic accents):
+     mint   -> interaction only (links, buttons, focus, active)
+     signal -> indexing / emphasis only (numbers, indices, live)
+   Everything else is ink + paper + neutral. No third accent.
+   ============================================================ */
+
 :root {
-  --bg-main: #08090C;
-  --bg-card-light: #ECEEF2;
-  --text-dark: #0F172A;
-  --accent-mint: #A5F3FC;
-  --accent-cyan: #38BDF8;
+  /* --- Legacy names kept: notches + hero rely on --bg-main --- */
+  --bg-main: #08090c;
+  --bg-card-light: #eceef2;
+  --text-dark: #0f172a;
+  --accent-mint: #a5f3fc;
+  --accent-cyan: #38bdf8;
+
+  /* --- Ink (dark surfaces) --- */
+  --ink-900: #08090c; /* page base */
+  --ink-800: #0b0d12; /* raised */
+  --ink-700: #10131a; /* panel */
+  --ink-600: #161a23; /* panel raised */
+  --ink-line: rgba(255, 255, 255, 0.08);
+  --ink-line-strong: rgba(255, 255, 255, 0.16);
+
+  /* --- Paper (light surfaces) --- */
+  --paper-100: #f7f8fa;
+  --paper-200: #eceef2;
+  --paper-300: #dfe3e9;
+
+  /* --- Text --- */
+  --fg-primary: #f8fafc;
+  --fg-secondary: #98a2b3;
+  --fg-tertiary: #6b7480;
+  --fg-on-paper: #0f172a;
+  --fg-on-paper-muted: #4a5461;
+
+  /* --- Accents --- */
+  --mint: #a5f3fc;
+  --mint-deep: #67e8f9;
+  --signal: #ff5a1f;
+
+  /* --- Layout: one gutter system, one max width --- */
+  --gutter: 20px;
+  --container-max: 1440px;
+  --container-narrow: 880px;
+
+  /* Header is fixed and overlays the page. The hero pads itself by this amount
+     so its globe anchor box keeps the geometry ScrollGlobe measured before. */
+  --header-h: 72px;
+
+  /* --- Vertical rhythm --- */
+  --section-y: 88px;
+
+  /* --- Motion --- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --dur-fast: 180ms;
+  --dur-mid: 320ms;
+  --dur-slow: 640ms;
+}
+
+/* Narrow phones get tighter gutters but never less than 16px */
+@media (max-width: 379px) {
+  :root {
+    --gutter: 16px;
+  }
+}
+@media (min-width: 640px) {
+  :root {
+    --gutter: 32px;
+    --section-y: 112px;
+    --header-h: 80px;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 48px;
+    --section-y: 144px;
+    --header-h: 88px;
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --gutter: 64px;
+    --section-y: 168px;
+  }
 }
 
 * {
   box-sizing: border-box;
 }
 
-html, body {
-  background-color: var(--bg-main);
-  color: #F8FAFC;
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  background-color: var(--ink-900);
+  color: var(--fg-primary);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   overscroll-behavior-x: none;
+}
+
+body {
+  /* Opens the door to sub-pixel type rendering parity across platforms */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom scrollbar */
@@ -29,17 +122,125 @@ html, body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #08090C;
+  background: var(--ink-900);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1F2937;
+  background: #1f2937;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #374151;
 }
 
-/* Content Ripple Animation */
+/* Consistent, visible focus for keyboard users only */
+:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: rgba(165, 243, 252, 0.22);
+  color: #e0fbff;
+}
+
+/* ============================================================
+   LAYOUT PRIMITIVES
+   ============================================================ */
+
+.u-container {
+  width: 100%;
+  margin-inline: auto;
+  max-width: var(--container-max);
+  padding-inline: var(--gutter);
+}
+
+.u-container-narrow {
+  width: 100%;
+  margin-inline: auto;
+  max-width: var(--container-narrow);
+  padding-inline: var(--gutter);
+}
+
+/* Full-bleed row that still respects the gutter for its inner content */
+.u-bleed {
+  width: 100%;
+  padding-inline: var(--gutter);
+}
+
+.u-section {
+  padding-block: var(--section-y);
+}
+
+/* ============================================================
+   FLUID TYPE SCALE
+   Replaces stepped breakpoint jumps so headlines never wrap
+   awkwardly at in-between widths.
+   ============================================================ */
+
+.t-display-2xl {
+  font-size: clamp(2.5rem, 11vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+.t-display-xl {
+  font-size: clamp(2.125rem, 8vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+.t-display-lg {
+  font-size: clamp(1.875rem, 5.5vw, 3.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+.t-display-md {
+  font-size: clamp(1.5rem, 3.6vw, 2.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+}
+.t-body-lg {
+  font-size: clamp(1rem, 1.15vw, 1.1875rem);
+  line-height: 1.6;
+}
+.t-body {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.t-meta {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Keeps short headlines from dropping a single orphan word */
+.t-balance {
+  text-wrap: balance;
+}
+.t-pretty {
+  text-wrap: pretty;
+}
+
+/* Long tokens (URLs, ids) reflow instead of forcing overflow */
+.t-wrap-anywhere {
+  overflow-wrap: anywhere;
+}
+
+/* ============================================================
+   HAIRLINE RULES — structural, replaces decorative dividers
+   ============================================================ */
+
+.u-rule {
+  border: 0;
+  border-top: 1px solid var(--ink-line);
+  margin: 0;
+}
+
+/* ============================================================
+   HERO — EXISTING ANIMATION. DO NOT ALTER TIMING OR NAMES.
+   ScrollGlobe.tsx and HeroSection.tsx depend on these.
+   ============================================================ */
+
 .hero-ready .hero-content-ring-0 {
   animation: contentRipple 900ms cubic-bezier(0.25, 1, 0.5, 1) 0ms both;
 }
@@ -114,7 +315,21 @@ html, body {
   animation-play-state: paused;
 }
 
-/* Concave Corner Cutout Fillets */
+/* Slow infinite globe rotation — PROTECTED (ScrollGlobe) */
+@keyframes globeSpin {
+  0% {
+    transform: scale(1.12) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.12) rotate(360deg);
+  }
+}
+
+.animate-globe-spin {
+  animation: globeSpin 120s linear infinite;
+}
+
+/* Concave Corner Cutout Fillets — PROTECTED (hero globe anchor geometry) */
 .notch-top-right {
   position: absolute;
   top: 0;
@@ -181,8 +396,149 @@ html, body {
   box-shadow: -6px 6px 0 6px var(--bg-main);
 }
 
-/* Reduced Motion Override */
+/* ============================================================
+   SITE HEADER + MOBILE MENU
+   The header entrance is deliberately independent of `.hero-ready`
+   so it also runs on /services, /work, /about and /contact.
+   ============================================================ */
+
+.site-header {
+  transform: translate3d(0, -100%, 0);
+  opacity: 0;
+}
+.site-header.is-mounted {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transition:
+    transform 900ms var(--ease-out-expo),
+    opacity 600ms linear;
+}
+
+/* Underline wipe. Scales a 1px element, so hovering never reflows the row. */
+.nav-link__rule {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-mid) var(--ease-out-quart);
+}
+.nav-link:hover .nav-link__rule,
+.nav-link:focus-visible .nav-link__rule,
+.nav-link[data-active='true'] .nav-link__rule {
+  transform: scaleX(1);
+}
+
+/* Mobile menu. Stays mounted and is hidden with `visibility`, which removes it
+   from the tab order and the accessibility tree without unmounting — that is
+   what allows a real exit animation. The visibility transition is delayed on
+   close so the panel finishes fading before it becomes unfocusable. */
+.menu-panel {
+  visibility: hidden;
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  transition:
+    opacity var(--dur-mid) linear,
+    clip-path 560ms var(--ease-out-expo),
+    visibility 0s linear 580ms;
+}
+.menu-panel[data-open='true'] {
+  visibility: visible;
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transition:
+    opacity 200ms linear,
+    clip-path 720ms var(--ease-out-expo),
+    visibility 0s linear 0s;
+}
+
+.menu-item {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0);
+  transition:
+    opacity 200ms linear,
+    transform 200ms var(--ease-out-quart);
+}
+.menu-panel[data-open='true'] .menu-item {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 480ms linear var(--menu-delay, 0ms),
+    transform 720ms var(--ease-out-expo) var(--menu-delay, 0ms);
+}
+
+/* ============================================================
+   REVEAL PRIMITIVE — driven by IntersectionObserver in
+   lib/motion/useReveal.ts. Transform + opacity only.
+   ============================================================ */
+
+[data-reveal] {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+[data-reveal='up'] {
+  transform: translate3d(0, 22px, 0);
+}
+[data-reveal='fade'] {
+  transform: none;
+}
+[data-reveal='clip'] {
+  opacity: 1;
+  clip-path: inset(0 0 100% 0);
+}
+[data-reveal='clip-left'] {
+  opacity: 1;
+  clip-path: inset(0 100% 0 0);
+}
+[data-reveal='scale'] {
+  transform: scale(1.06);
+}
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  clip-path: inset(0 0 0 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out-expo),
+    transform 900ms var(--ease-out-expo),
+    clip-path 1100ms var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal].is-revealed {
+  will-change: auto;
+}
+
+/* ============================================================
+   MARQUEE — used once, for the credibility strip
+   ============================================================ */
+
+@keyframes marqueeShift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.u-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeShift var(--marquee-duration, 46s) linear infinite;
+}
+
+.u-marquee:hover .u-marquee-track,
+.u-marquee:focus-within .u-marquee-track {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   REDUCED MOTION — render final states, kill all motion
+   ============================================================ */
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .hero-content-ring-0,
   .hero-content-ring-1,
   .hero-content-ring-2,
@@ -195,24 +551,45 @@ html, body {
   .hero-ready .hero-bg-media,
   .animate-orbit,
   .animate-orbit-counter,
-  .animate-globe-spin {
+  .u-marquee-track {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
-}
 
-/* Slow infinite globe rotation */
-@keyframes globeSpin {
-  0% {
-    transform: scale(1.12) rotate(0deg);
+  /* The globe stops spinning but KEEPS its scale. ScrollGlobe sets
+     transform: scale(1.12) inline to hide the source image's own edge inside
+     the circular mask; resetting transform here would expose that seam. */
+  .animate-globe-spin {
+    animation: none !important;
   }
-  100% {
-    transform: scale(1.12) rotate(360deg);
-  }
-}
 
-.animate-globe-spin {
-  animation: globeSpin 120s linear infinite;
+  [data-reveal],
+  [data-reveal].is-revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+
+  /* Navigation still changes state, it just changes instantly. The closed
+     menu panel keeps its hidden state — only the easing is removed. */
+  .site-header,
+  .site-header.is-mounted,
+  .nav-link__rule,
+  .menu-panel,
+  .menu-panel[data-open='true'],
+  .menu-item,
+  .menu-panel[data-open='true'] .menu-item {
+    transition: none !important;
+  }
+  .site-header {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .menu-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

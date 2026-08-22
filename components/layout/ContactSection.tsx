@@ -9,7 +9,7 @@ export function ContactSection() {
       {/* Subtle Ambient Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#a2ff4d]/5 blur-[150px] pointer-events-none rounded-full" />
       
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 sm:px-10 flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-5 sm:px-10 flex flex-col items-center">
         
         {/* Headline - 2 lines on all devices */}
         <h2 className="text-[26px] sm:text-4xl md:text-5xl lg:text-[4rem] font-heading font-extrabold text-white mb-12 sm:mb-16 text-center leading-[1.15] tracking-tight">

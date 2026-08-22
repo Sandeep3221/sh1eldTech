@@ -38,7 +38,7 @@ const LogoRow = ({ images }: { images: string[] }) => (
 export function TestimonialsSection() {
   return (
     <section className="relative w-full bg-[#08090C] py-20 md:py-28 overflow-hidden border-t border-white/5">
-      <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12 flex flex-col items-center">
+      <div className="w-full max-w-[1400px] mx-auto px-5 sm:px-10 lg:px-12 flex flex-col items-center">
         
         {/* Shortened, crisp, smaller Headline */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-16 text-center leading-tight tracking-tight max-w-2xl mx-auto opacity-90">
